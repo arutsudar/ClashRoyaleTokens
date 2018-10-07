@@ -1,6 +1,8 @@
 import json
 from cardTradableDetails import cardsNeededBy
 from cardTradableDetails import cardsDonatableBy
+
+
 #Input is the full Player Json endpoint
 #Output is an array of Jsons
 #Filtering the card details array
@@ -58,6 +60,7 @@ def filterCardsByExcludingCardsNeededByPlayer(cardsJsonArray,cardsList): #Might 
 			resultArray.append(i)
 	return resultArray
 	
+
 #Input is cardJsonArray
 #Output is cardsNameList	
 def getCardsNamesFromcardJsonArray(cardJsonArray):
@@ -67,6 +70,8 @@ def getCardsNamesFromcardJsonArray(cardJsonArray):
 	return resultList
 	
 	
+#Inputs are playerTag and the list of cards names
+#Storing the cards which can be donated by a particular player
 def saveCardsWhichAreDonatableByParticularPlayer(playerTag,cardsNamesList):	
 	for i in cardsNamesList:
 		flag=0

@@ -1,7 +1,8 @@
 import json
 from cardTradableDetails import cardsNeededBy
 from cardTradableDetails import cardsDonatableBy
-
+import constants
+import util
 
 #Input is the full Player Json endpoint
 #Output is an array of Jsons
@@ -83,3 +84,33 @@ def saveCardsWhichAreDonatableByParticularPlayer(playerTag,cardsNamesList):
 			cardsDonatableBy.append({i: [playerTag]})
 
 		
+#Input 1 is a list of Jsons as an array 
+#Input 2 is rarity name
+#Output is a filtered list of Jsons as an array
+#Filtering is based on rarity
+def filterCardsBasedOnRarity(cardsJsonArray,rarity):
+	resultArray=[]
+	for i in cardsJsonArray:
+		if i['rarity']==rarity:
+			print i['name']
+			resultArray.append(i)
+	return resultArray
+
+
+#Return a string list of names of all cards in clash royale	
+def getAllCardsNamesAsList():
+    return constants.cardNamesList
+	
+
+#Input is the unlockedCards names and allCards names in order
+#Return the cards which are not unlocked yet
+def cardsWhichAreNotUnlocked(unlockedCards, allCards):
+	return util.differenceOfListTwoToListOne(unlockedCards, allCards)	
+
+
+#Input is the availableCards names and allCards names in order
+#Return the cards which are unlocked 
+def cardsWhichAreUnlocked(cards, allCards):
+	return util.intersectionOfTwoLists(cards, allCards)	#Right now the input 'cards' listis the same as the unlocked cards list
+
+	
